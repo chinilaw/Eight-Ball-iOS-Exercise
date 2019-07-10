@@ -9,12 +9,31 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let ballArray : [String] = ["ball1", "ball2", "ball3", "ball4", "ball5"]
+    
+    var randomBallNumber : Int?
 
+    @IBOutlet weak var eightBsll: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        newBallImage()
     }
-
+    
+    @IBAction func askButton(_ sender: UIButton) {
+        newBallImage()
+    }
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        newBallImage()
+    }
+    
+    func newBallImage () {
+        randomBallNumber = Int.random(in: 0 ... 4)
+        eightBsll.image = UIImage(named: ballArray[randomBallNumber!])
+    }
 
 }
 
